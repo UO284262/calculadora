@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <meta name ="author" content ="Abel Busto Dopazo" />
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Milan</title>
+    <script src="CalculadoraMilan.js"></script>
+    <link rel="stylesheet" type="text/css" href="CalculadoraMilan.css" />
+</head>
+
+<body>
+    <article>
+        <h1>Calculadora Milan</h1>
+        <input id="pantalla" type="text" readonly>
+
+        <input id="nombre" type="button" value="ON/C" onclick="calc.apagar()">
+        <input id="nombre" type="button" value="CE" onclick="calc.borrar()">
+        <input id="nombre" type="button" value="+/-" onclick="calc.masMenos()">
+        <input id="nombre" type="button" value="&#8730" onclick="calc.raiz()">
+        <input id="nombre" type="button" value="%" onclick="calc.porcentaje()">
+
+        <input id="nombre" type="button" value="7" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="8" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="9" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="x" onclick="calc.multiplicacion()">
+        <input id="nombre" type="button" value="·/·" onclick="calc.division()">
+
+        <input id="nombre" type="button" value="4" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="5" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="6" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="-" onclick="calc.resta()">
+        <input id="nombre" type="button" value="Mr/c" onclick="calc.mrc()">
+
+        <input id="nombre" type="button" value="1" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="2" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="3" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="+"  onclick="calc.suma()">
+        <input id="nombre" type="button" value="M-" onclick="calc.mMenos()">
+
+        <input id="nombre" type="button" value="0" onclick="calc.digitos(value)">
+        <input id="nombre" type="button" value="." onclick="calc.punto()">
+        <input id="nombre" type="button" value="=" onclick="calc.igual()">
+        <input id="nombre" type="button" value="M+" onclick="calc.mMas()">
+    </article>
+</body>
+</html>
