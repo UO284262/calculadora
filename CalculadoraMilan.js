@@ -187,7 +187,7 @@ class CalculadoraMilan {
             var aux = this.pantalla.charAt(this.pantalla.length - 1)
             if(isNaN(aux) && aux != "%" && aux != ".")
             {
-                this.operacion = this.operacion.slice(0,this.operacion.lastIndexOf(this.operacion[this.simbolo]));
+                this.operacion = this.operacion.slice(0,this.operacion.this.operacion.length - 2);
                 this.simbolo-=2;
                 this.number-=2;
                 this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);

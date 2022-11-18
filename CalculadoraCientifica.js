@@ -187,7 +187,7 @@ class CalculadoraMilan {
             var aux = this.pantalla.charAt(this.pantalla.length - 1)
             if(isNaN(aux) && aux != "%" && aux != ".")
             {
-                this.operacion = this.operacion.slice(0,this.operacion.lastIndexOf(this.operacion[this.simbolo]));
+                this.operacion = this.operacion.slice(0,this.operacion.this.operacion.length - 2);
                 this.simbolo-=2;
                 this.number-=2;
                 this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
@@ -577,13 +577,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
         var aComputar = "";
         for(var i = 0; i < operacion.length; i++)
         {
-            if(operacion[i+1] == "^")
-            {
-                operacion[i] = Math.pow(operacion[i],operacion[i+2]);
-                aComputar += operacion[i];
-                i+=2;
-            }
-            else if(operacion[i+1] == "exp")
+            if(operacion[i+1] == "exp")
             {
                 operacion[i] = Number(operacion[i] * Math.pow(10,operacion[i+2]));
                 aComputar += operacion[i];
@@ -597,21 +591,23 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
 
     borrarPlus() {
-        if(this.fe) {
-            this.toFE();
+        if(!isNaN(this.operacion[this.operacion.length - 1]) || (this.operacion[this.operacion.length - 1] +"").includes("."))
+        {
+            if(this.fe) {
+                this.toFE();
+            }
+            if(isNaN(this.operacion[this.operacion.length - 1])) {
+                this.pantalla = this.pantalla.substring(0,this.pantalla.length);
+                this.simbolo-=2;
+                this.number-=2;
+            }
+            else {
+                this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum])
+            }
+            this.operacion = this.operacion.slice(0,this.operacion.length - 1);
+            this.print();
+            this.lastPressed = "";
         }
-        if(isNaN(this.operacion[this.operacion.length - 1])) {
-            this.pantalla = this.pantalla.substring(0,this.pantalla.length);
-            this.simbolo-=2;
-            this.number-=2;
-        }
-        else {
-            this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum])
-            this.preNum--;
-        }
-        this.operacion = this.operacion.slice(0,this.operacion.length - 1);
-        this.print();
-        this.lastPressed = "";
     }
 
     borrar() {
@@ -639,9 +635,10 @@ class CalculadoraCientifica extends CalculadoraMilan{
             }
             else if(isNaN(aux) && aux != "%" && aux != ".")
             {
-                this.operacion = this.operacion.slice(0,this.operacion.lastIndexOf(this.operacion[this.simbolo]));
+                this.operacion = isNaN(this.operacion[this.number-2]) ? this.operacion.slice(0,this.operacion.length - 2) : this.operacion.slice(0,this.operacion.length - 1);
                 this.simbolo-=2;
                 this.number-=2;
+                this.preNum--;
                 this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
             }
             else
@@ -807,7 +804,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
     tan() {
         var valor = this.rad? this.operacion[this.number] : Number(this.operacion[this.number]/360 * 2*Math.PI);
         this.operacion[this.number] = Math.round(this.isShift? (this.hyp? Math.tanh(valor) : Math.atan(valor)) : (this.hyp? Math.tanh(valor) : Math.tan(valor))*1000000000)/1000000000;
-        this.pantalla = this.pantalla.substring(0,this.preNum);
+        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "tan";
         if(this.isShift) this.doShift();
@@ -826,7 +823,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
     potencia() {
         this.iSimbolo();
         this.pantalla += "^";
-        this.operacion[this.simbolo] = "^";
+        this.operacion[this.simbolo] = "**";
         this.number+=2;
         this.lastPressed = "^";
         this.print();
