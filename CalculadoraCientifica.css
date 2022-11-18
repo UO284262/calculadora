@@ -21,6 +21,7 @@ input {
 input[type="text"]:disabled {
     grid-column: 1 / span 5;
     background-color: #e2e2e2;
+    font-size: 1.5em;
 }
 
 aside{
