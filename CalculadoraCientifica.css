@@ -1,0 +1,57 @@
+body {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+main {
+    background-color: #e2e2e2;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(10,1fr);
+    gap: 0.2em;
+}
+
+input {
+    border: none;
+}
+
+input[type="text"]:disabled {
+    grid-column: 1 / span 5;
+    background-color: #e2e2e2;
+}
+
+section {
+    grid-column: 1 / span 5;
+    background-color: #e2e2e2;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 1em;
+}
+
+label {
+    grid-column: 1 / span 5;
+    font-size: 1.2em;
+}
+
+input[type="button"] {
+    width: 5em;
+    height: 3em;
+    background-color: #e8e8e8;
+}
+
+input[name="digito"] {
+    background-color: white;
+}
+
+section input[type="button"] {
+    background-color: #e2e2e2;
+    width: 4.5em;
+    height: 2.5em;
+    font-size: 0.6em;
+}
+
+
+

@@ -6,7 +6,7 @@ body {
     background-color: white;
 }
 
-article {
+main {
     background-color: #79A97B;
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -14,11 +14,7 @@ article {
     gap: 0.5em;
     padding: 0.7em;
     border-radius: 1em;
-    border: 2px double #000
-}
-
-input[value="+"] {
-    grid-row: span 2;
+    border: 2px double #0a200b;
 }
 
 input[type="text"] {
@@ -27,14 +23,21 @@ input[type="text"] {
     color: white;
 }
 
-h1 {
+label {
     grid-column: 1 / span 5;
-    justify-self: center;
     font-size: 1.2em;
 }
 
-input {
+input[type="button"][value="+"] {
+    grid-row: span 2;
+    height: 8.5em;
+}
+
+input[type="button"] {
+    height: 4em;
     background-color: #0a200b;
     color: #b8ffbb;
 }
+
+
 

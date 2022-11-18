@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <meta name ="author" content ="Abel Busto Dopazo" />
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Científica</title>
+    <script src="CalculadoraCientifica.js"></script>
+    <link rel="stylesheet" type="text/css" href="CalculadoraCientifica.css" />
+</head>
+
+<body>
+    <main>
+        <input title="Pantalla" name="pantalla" type="text" readonly disabled>
+        <section>
+            <input type="button" value="DEG" onclick="calc.degRad()">
+            <input type="button" value="HYP" onclick="calc.doHyp()">
+            <input type="button" value="F-E" onclick="calc.toFE()">
+        </section>
+        <section>
+            <input type="button" value="MC" onclick="calc.mReset()">
+            <input type="button" value="MR" onclick="calc.mrc()">
+            <input type="button" value="M+" onclick="calc.mMas()">
+            <input type="button" value="M-" onclick="calc.mMenos()">
+            <input type="button" value="MS" onclick="calc.mGuardar()">
+        </section>
+
+        <input type="button" value="x^2" onclick="calc.square()">
+        <input type="button" value="x^y" onclick="calc.potencia()">
+        <input type="button" value="sin" onclick="calc.sin()">
+        <input type="button" value="cos" onclick="calc.cos()">
+        <input type="button" value="tan" onclick="calc.tan()">
+
+        <input type="button" value="&#8730;" onclick="calc.raiz()">
+        <input type="button" value="10^x" onclick="calc.potencia10(value)">
+        <input type="button" value="log" onclick="calc.logaritmo(value)">
+        <input type="button" value="Exp" onclick="calc.exponente()">
+        <input type="button" value="Mod" onclick="calc.modulo()">
+
+        <input type="button" value="SHFT" onclick="calc.doShift()">
+        <input type="button" value="CE" onclick="calc.borrarPlus()">
+        <input type="button" value="C" onclick="calc.apagar()">
+        <input type="button" value="<x" onclick="calc.borrar()">
+        <input type="button" value="·/·" onclick="calc.division()">
+
+        <input type="button" value="pi" onclick="calc.digitos(Math.PI)">
+        <input type="button" value="7" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="8" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="9" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="x" onclick="calc.multiplicacion()">
+
+        <input type="button" value="n!" onclick="calc.doFactorial(value)">
+        <input type="button" value="4" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="5" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="6" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="-" onclick="calc.resta()">
+
+        <input type="button" value="+-" onclick="calc.masMenos()">
+        <input type="button" value="1" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="2" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="3" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="+" onclick="calc.suma()">
+
+        <input type="button" value="(" onclick="calc.sParentesis()">
+        <input type="button" value=")" onclick="calc.eParentesis()">
+        <input type="button" value="0" name="digito" onclick="calc.digitos(value)">
+        <input type="button" value="," name="digito" onclick="calc.punto()">
+        <input type="button" value="=" onclick="calc.igual()">
+    </main>
+</body>
+</html>
