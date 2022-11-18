@@ -23,7 +23,7 @@ input[type="text"]:disabled {
     background-color: #e2e2e2;
 }
 
-main main{
+aside{
     grid-column: 1 / span 5;
     background-color: #e2e2e2;
     display: grid;
@@ -46,7 +46,7 @@ input[name="digito"] {
     background-color: white;
 }
 
-main main input[type="button"] {
+aside input[type="button"] {
     background-color: #e2e2e2;
     width: 4.5em;
     height: 2.5em;
