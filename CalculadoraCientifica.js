@@ -438,10 +438,10 @@ class CalculadoraCientifica extends CalculadoraMilan{
             document.querySelector("input[type=\"button\"][value = \"F-E*\"]").value = "F-E";
         }
         if(this.fe && !isNaN(this.operacion[this.number])) {
-            this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum])
+            this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum])
             this.pantalla += this.operacion[this.number].toExponential();
         } else if(!isNaN(this.operacion[this.number])){
-            this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum])
+            this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum])
             this.pantalla += this.operacion[this.number].toFixed();
         }
         this.lastPressed = "fe";
@@ -559,7 +559,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
             this.number+=2;
             this.operacion[this.simbolo] = "=";
             this.operacion[this.number] = this.valorActual;
-            this.pantalla = this.fe? this.valorActual.toExponential() : this.valorActual.toFixed();
+            this.pantalla = this.fe? Number(this.valorActual.toExponential(10)) : Number(this.valorActual.toFixed(10));
             this.lastNum = this.valorActual;
             this.preNum = 0;
             this.preNums = [0];
