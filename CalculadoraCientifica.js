@@ -392,7 +392,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
             || this.lastPressed == "mrc" || this.lastPressed == "+/-" || this.lastPressed == "10^"
             || this.lastPressed == "!" || this.lastPressed == "sin" || this.lastPressed == "cos"
             || this.lastPressed == "tan" || this.lastPressed == "log" || this.lastPressed == "mg"
-            || this.lastPressed == "mc")
+            || this.lastPressed == "mc" || this.lastPressed == "fe")
         {
             this.operacion = [0];
             this.number = 0;
@@ -444,6 +444,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
             this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum])
             this.pantalla += this.operacion[this.number].toFixed();
         }
+        this.lastPressed = "fe";
         this.print();
     }
 
@@ -596,6 +597,9 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
 
     borrarPlus() {
+        if(this.fe) {
+            this.toFE();
+        }
         if(isNaN(this.operacion[this.operacion.length - 1])) {
             this.pantalla = this.pantalla.substring(0,this.pantalla.length);
             this.simbolo-=2;
@@ -607,9 +611,13 @@ class CalculadoraCientifica extends CalculadoraMilan{
         }
         this.operacion = this.operacion.slice(0,this.operacion.length - 1);
         this.print();
+        this.lastPressed = "";
     }
 
     borrar() {
+        if(this.fe) {
+            this.toFE();
+        }
         if(this.lastPressed == "=") {
             this.cerrar();
         }
@@ -658,6 +666,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
             }
             this.print();
         }
+        this.lastPressed = "";
     }
 
     mrc() {
@@ -710,9 +719,9 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
 
     apagar() {
+        this.cerrar();
         this.pantalla = "";
         this.print();
-        this.cerrar()
         this.memoriaIndependiente = Number(0);
     }
 
