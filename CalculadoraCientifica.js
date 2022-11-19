@@ -190,7 +190,7 @@ class CalculadoraMilan {
                 this.operacion = this.operacion.slice(0,this.operacion.this.operacion.length - 2);
                 this.simbolo-=2;
                 this.number-=2;
-                this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
             }
             else
             {
@@ -207,7 +207,7 @@ class CalculadoraMilan {
                     else {
                         this.operacion[this.number] = Number((this.operacion[this.number] + "").substring(0,(this.operacion[this.number] + "").length - 1));
                     }
-                    this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                    this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
                 }
             }
             this.print();
@@ -219,7 +219,7 @@ class CalculadoraMilan {
         this.operacion[this.number] = numero;
         while(!isNaN(this.pantalla[this.pantalla.length - 1]))
         {
-            this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+            this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
         }
         this.pantalla += numero;
         this.lastPressed = "mrc";
@@ -415,7 +415,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
         {
             if(this.operacion[this.number] == 0)
             {
-                this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+                this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
                 this.pantalla += digito +"";
             }
             else
@@ -476,7 +476,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
         }
         if(!((this.operacion[this.number]+ "").toString()).includes("."))
         {
-            this.pantalla = this.operacion[this.number] == 0 ? this.pantalla.substring(0,this.pantalla.length - 1) + "0." : this.pantalla + ".";
+            this.pantalla = this.operacion[this.number] == 0 ? (this.pantalla + "").substring(0,this.pantalla.length - 1) + "0." : this.pantalla + ".";
             this.operacion[this.number] = !isNaN(this.operacion[this.number]) ? this.operacion[this.number] + "." : ".";
             this.lastPressed = ".";
             this.print();
@@ -488,7 +488,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
             this.pantalla = "";
         }
         if(!isNaN(this.operacion[this.operacion.length - 1])) {
-            this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+            this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
             this.pantalla += "(" + this.lastNum;
         }
         else {
@@ -597,12 +597,12 @@ class CalculadoraCientifica extends CalculadoraMilan{
                 this.toFE();
             }
             if(isNaN(this.operacion[this.operacion.length - 1])) {
-                this.pantalla = this.pantalla.substring(0,this.pantalla.length);
+                this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length);
                 this.simbolo-=2;
                 this.number-=2;
             }
             else {
-                this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum])
+                this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum])
             }
             this.operacion = this.operacion.slice(0,this.operacion.length - 1);
             this.print();
@@ -621,15 +621,15 @@ class CalculadoraCientifica extends CalculadoraMilan{
         {
             var aux = this.pantalla.charAt(this.pantalla.length - 1)
             if(aux == "(") {
-                this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
                 this.nParentesis--;
             }
             else if(aux == ")") {
                 while(aux != "(") {
-                    this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                    this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
                     aux = this.pantalla.charAt(this.pantalla.length - 1);
                 }
-                this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
                 this.operacion = this.operacion.slice(0,this.number);
                 this.preNum--;
             }
@@ -639,7 +639,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
                 this.simbolo-=2;
                 this.number-=2;
                 this.preNum--;
-                this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
             }
             else
             {
@@ -658,7 +658,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
                         this.operacion[this.number] = Number((this.operacion[this.number] + "").substring(0,(this.operacion[this.number] + "").length - 1));
                     }
                     this.lastNum = this.operacion[this.number];
-                    this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+                    this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
                 }
             }
             this.print();
@@ -671,7 +671,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
         this.operacion[this.number] = numero;
         while(!isNaN(this.pantalla[this.pantalla.length - 1]))
         {
-            this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
+            this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
         }
         this.pantalla += numero;
         this.lastPressed = "mrc";
@@ -748,7 +748,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
 
     raiz() {
         this.operacion[this.number] = Math.sqrt(this.operacion[this.number]);
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "sqrt";
         this.print();
@@ -756,7 +756,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
 
     masMenos() {
         this.operacion[this.number] = this.operacion[this.number] * -1;
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "+/-";
         this.print();
@@ -771,10 +771,19 @@ class CalculadoraCientifica extends CalculadoraMilan{
         }
     }
 
+    doFactorial() {
+        this.operacion[this.number] = this.#factorial(this.operacion[this.number]);
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
+        this.pantalla += this.operacion[this.number] + "";
+        this.lastPressed = "!";
+        this.print();
+    }
+
     sin() {
-        var valor = this.rad? this.operacion[this.number] : Number(this.operacion[this.number]/360 * 2*Math.PI);
-        this.operacion[this.number] = Math.round(this.isShift? (this.hyp? Math.sinh(valor) : Math.asin(valor)) : (this.hyp? Math.sinh(valor) : Math.sin(valor))*1000000000)/1000000000;
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        var valor = !this.rad && !this.isShift? Number(this.operacion[this.number]/360 * 2*Math.PI) : this.operacion[this.number];
+        var res = Math.round((this.isShift? (this.hyp? Math.sinh(valor) : Math.asin(valor)) : (this.hyp? Math.sinh(valor) : Math.sin(valor)))*1000000000)/1000000000;
+        this.operacion[this.number] = Math.round((this.isShift && !this.rad?  Number(res/Math.PI * 180) : res)*100000)/100000;
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "sin";
         if(this.isShift) this.doShift();
@@ -782,18 +791,11 @@ class CalculadoraCientifica extends CalculadoraMilan{
         this.print();
     }
 
-    doFactorial() {
-        this.operacion[this.number] = this.#factorial(this.operacion[this.number]);
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
-        this.pantalla += this.operacion[this.number] + "";
-        this.lastPressed = "!";
-        this.print();
-    }
-
     cos() {
-        var valor = this.rad? this.operacion[this.number] : Number(this.operacion[this.number]/360 * 2*Math.PI);
-        this.operacion[this.number] = Math.round(this.isShift? (this.hyp? Math.cosh(valor) : Math.acos(valor)) : (this.hyp? Math.cosh(valor) : Math.cos(valor))*1000000000)/1000000000;
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        var valor = !this.rad && !this.isShift? Number(this.operacion[this.number]/360 * 2*Math.PI) : this.operacion[this.number];
+        var res = Math.round((this.isShift? (this.hyp? Math.cosh(valor) : Math.acos(valor)) : (this.hyp? Math.cosh(valor) : Math.cos(valor)))*1000000000)/1000000000;
+        this.operacion[this.number] = Math.round((this.isShift && !this.rad?  Number(res/Math.PI * 180) : res)*100000)/100000;
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "cos";
         if(this.isShift) this.doShift();
@@ -802,9 +804,10 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
 
     tan() {
-        var valor = this.rad? this.operacion[this.number] : Number(this.operacion[this.number]/360 * 2*Math.PI);
-        this.operacion[this.number] = Math.round(this.isShift? (this.hyp? Math.tanh(valor) : Math.atan(valor)) : (this.hyp? Math.tanh(valor) : Math.tan(valor))*1000000000)/1000000000;
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        var valor = !this.rad && !this.isShift? Number(this.operacion[this.number]/360 * 2*Math.PI) : this.operacion[this.number];
+        var res = Math.round((this.isShift? (this.hyp? Math.tanh(valor) : Math.atan(valor)) : (this.hyp? Math.tanh(valor) : Math.tan(valor)))*1000000000)/1000000000;
+        this.operacion[this.number] = Math.round((this.isShift && !this.rad?  Number(res/Math.PI * 180) : res)*100000)/100000;
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "tan";
         if(this.isShift) this.doShift();
@@ -814,7 +817,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
 
     square() {
         this.operacion[this.number] = Number(eval(this.operacion[this.number] * this.operacion[this.number]));
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "square";
         this.print();
@@ -839,7 +842,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
     logaritmo() {
         this.operacion[this.number] = Math.log(this.operacion[this.number]);
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "log";
         this.print();
@@ -854,7 +857,7 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
     potencia10() {
         this.operacion[this.number] = Math.pow(10,this.operacion[this.number]);
-        this.pantalla = this.pantalla.substring(0,this.preNums[this.preNum]);
+        this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "10^";
         this.print();
