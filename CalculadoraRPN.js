@@ -4,6 +4,37 @@ class CalculadoraRPN {
         this.nextPila = 0;
         this.nextNum = "";
         this.isShift = false;
+        document.addEventListener('keydown', (event) => {
+            this.#ejecutar(event.key);
+        });
+    }
+
+    #ejecutar(char)
+    {
+        if(!isNaN(char))
+        {
+            this.digito(char);
+            return;
+        }
+        switch(char)
+        {
+            case "q": this.masMenos(); break;
+            case "z": this.raiz(); break;
+            case "a": this.apagar(); break;
+            case "Backspace": this.borrar(); break;
+            case "Enter": this.enter(); break;
+            case "+": this.operacionBinaria("+"); break;
+            case "-": this.operacionBinaria("-"); break;
+            case "*": this.operacionBinaria("*"); break;
+            case "/": this.operacionBinaria("/"); break;
+            case ".": this.punto(); break;
+            case "s": this.operacionUnaria("sin"); break;
+            case "t": this.operacionUnaria("tan"); break;
+            case "c": this.operacionUnaria("cos"); break;
+            case "S": this.operacionUnaria("asin"); break;
+            case "T": this.operacionUnaria("atan"); break;
+            case "C": this.operacionUnaria("acos"); break;
+        }
     }
 
     #print() {
@@ -24,7 +55,7 @@ class CalculadoraRPN {
                 case "+": res = Number(Number(op1) + Number(op2)); break;
                 case "-": res = Number(Number(op1) - Number(op2)); break;
                 case "·/·": res = Number(Number(op1) / Number(op2)); break;
-                case "x": res = Number(Number(op1) * Number(op2)); break;
+                case "*": res = Number(Number(op1) * Number(op2)); break;
                 case "^": res = Number(Number(op1) ** Number(op2)); break;
             }
             this.#dosPorUno(res);
@@ -42,10 +73,10 @@ class CalculadoraRPN {
                 case "sin": res = Math.round(Math.sin(op1) * 100000)/100000; break;
                 case "cos": res = Math.round(Math.cos(op1) * 100000)/100000; break;
                 case "tan": res = Math.round(Math.tan(op1) * 100000)/100000; break;
-                case "asin": res = Math.round(Math.asin(op1) * 100000)/100000; break;
-                case "acos": res = Math.round(Math.acos(op1) * 100000)/100000; break;
-                case "atan": res = Math.round(Math.atan(op1) * 100000)/100000; break;
-                case "sqrt": if(op1 >= 0) res = Math.sqrt(op1); break;
+                case "asin": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.asin(op1) * 100000)/100000; break;
+                case "acos": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.acos(op1) * 100000)/100000; break;
+                case "atan": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.atan(op1) * 100000)/100000; break;
+                case "sqrt": if(op1 >= -1 && op1 <= 1) res = Math.sqrt(op1); break;
                 case "!": if(op1 > 0) res = Number(this.#factorial(op1)); break;
                 case "ln": if(op1 > 0) res = Math.log(op1); break;
             }
@@ -85,6 +116,10 @@ class CalculadoraRPN {
 
     punto() {
         this.digito(".");
+    }
+
+    multiplicacion() {
+        this.operacionBinaria("*");
     }
 
     potencia() {
