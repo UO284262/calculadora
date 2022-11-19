@@ -1,0 +1,88 @@
+body {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+h1 {
+    background-color: #e2e2e2;
+    width: 20em;
+    font-size: 1em;
+    height: 2em;
+    margin-block-end: 0em;
+    padding-top: 0.25em;
+    border-bottom: 2px solid #7e7e7e;
+    border: 3px inset #bbbbbb;
+}
+
+aside:last-of-type {
+    border: 3px inset #bbbbbb;
+    background-color: #e2e2e2;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(6,1fr);
+    width: 20em;
+}
+
+input[type="text"] {
+    border: none;
+}
+
+input[type="button"] {
+    border: 4px outset #bbbbbb;
+    height: 4em;
+    background-color: #e8e8e8;
+}
+
+aside:last-of-type input[type="text"]:disabled {
+    grid-column: 1 / span 5;
+    background-color: #e2e2e2;
+    font-size: 1em;
+}
+
+aside:first-of-type{
+    border: 3px inset #bbbbbb;
+    background-color: #e2e2e2;
+    display: grid;
+    grid-template-rows: repeat(11,1fr);
+    grid-template-columns: repeat(10,1fr);
+    width: 20em;
+}
+
+aside:first-of-type label {
+    grid-column: 1 / span 1;
+    font-size: 1em;
+    border-bottom: 1px dashed black;
+    border-right: 1px dashed black;
+    padding-right: 1.5em;
+    padding-left: 0.25em;
+}
+
+input[type="button"][value = "Enter"] {
+    grid-column: span 2;
+    background-color: black;
+    color: white;
+    height: 4em;
+}
+
+input[name="digito"] {
+    background-color: white;
+}
+
+aside:first-of-type input[type="text"]:disabled {
+    grid-column: 2 / span 9;
+    background-color: #e2e2e2;
+    font-size: 1em;
+    border-bottom: 1px dashed black;
+}
+
+aside:last-of-type label {
+    grid-column: 1 / span 5;
+    font-size: 0.8em;
+}
+
+
+
+
