@@ -14,6 +14,7 @@ main {
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(7,1fr);
     gap: 0.5em;
+    color: black;
     padding: 0.7em;
     border-radius: 1em;
     border: 2px double #0a200b;
