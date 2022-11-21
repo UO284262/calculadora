@@ -12,7 +12,7 @@ main {
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(10,1fr);
     gap: 0.2em;
-    color: black;
+    /*heredado de body -> color: black;*/
 }
 
 input {
@@ -21,15 +21,13 @@ input {
 
 input[type="text"]:disabled {
     grid-column: 1 / span 5;
-    background-color: #e2e2e2;
-    color: black;
     font-size: 1.5em;
 }
 
 aside{
     grid-column: 1 / span 5;
     background-color: #e2e2e2;
-    color: black;
+    /*heredado de body -> color: black;*/
     display: grid;
     grid-template-columns: repeat(6,1fr);
     gap: 1em;
@@ -44,7 +42,7 @@ input[type="button"] {
     width: 5em;
     height: 3em;
     background-color: #e8e8e8;
-    color: black;
+    /*heredado de body -> color: black;*/
 }
 
 input[name="digito"] {
@@ -53,8 +51,6 @@ input[name="digito"] {
 }
 
 aside input[type="button"] {
-    background-color: #e2e2e2;
-    color: black;
     width: 4.5em;
     height: 2.5em;
     font-size: 0.6em;
