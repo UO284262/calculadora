@@ -1,18 +1,17 @@
+
+/*Selector Specificity: (0,0,1)*/
 h1 {
     background-color: #416042;
     color: beige;
 }
 
-h2 {
-    background-color: #79A97B;
-    color: black;
-}
-
+/*Selector Specificity: (0,0,1)*/
 h3, h2, h4, p {
     background-color: #416042;
     color: #ffffff;
 }
 
+/*Selector Specificity: (0,0,1)*/
 body {
     background-color: #79A97B;
     color: beige
