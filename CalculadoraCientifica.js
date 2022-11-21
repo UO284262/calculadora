@@ -381,6 +381,34 @@ class CalculadoraCientifica extends CalculadoraMilan{
         this.rad = false;
         this.hyp = false;
         this.fe = false;
+        document.addEventListener('keydown', (event) => {
+            this.#ejecutar(event.key);
+        });
+    }
+
+    #ejecutar(char)
+    {
+        if(!isNaN(char))
+        {
+            this.digitos(char);
+            return;
+        }
+        switch(char)
+        {
+            case "c": this.masMenos(); break;
+            case "z": this.raiz(); break;
+            case "a": this.apagar(); break;
+            case "r": this.mMenos(); break;
+            case "s": this.mMas(); break;
+            case "m": this.mrc(); break;
+            case "Backspace": this.borrar(); break;
+            case "Enter": this.igual(); break;
+            case "+": this.suma(); break;
+            case "-": this.resta(); break;
+            case "*": this.multiplicacion(); break;
+            case "/": this.division(); break;
+            case ".": this.punto(); break;
+        }
     }
 
     digitos(digito) {

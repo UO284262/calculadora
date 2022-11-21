@@ -37,12 +37,19 @@ class CalculadoraRPN {
         }
     }
 
-    #print() {
+    print() {
         for(var i = 0; i <= this.pila.length; i++) {
-            document.getElementById("linea" + i).value = i == this.nextPila? this.nextNum : this.pila[i - 1];
+            if(i <= 10){
+                document.getElementById("linea" + i).value = i == this.nextPila? this.nextNum : this.pila[i - 1];
+            }
         }
         for(var i = this.pila.length + 1; i <= 10; i++) {
             document.getElementById("linea" + i).value = "";
+        }
+        if(this.pila.length > 10) {
+            document.querySelector("label[for = \"linea10\"]").textContent = "10 ^";
+        } else {
+            document.querySelector("label[for = \"linea10\"]").textContent = "10";
         }
     }
 
@@ -59,7 +66,7 @@ class CalculadoraRPN {
                 case "^": res = Number(Number(op1) ** Number(op2)); break;
             }
             this.#dosPorUno(res);
-            this.#print();
+            this.print();
         }
         if(this.isShift) this.doShift();
     }
@@ -76,29 +83,27 @@ class CalculadoraRPN {
                 case "asin": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.asin(op1) * 100000)/100000; break;
                 case "acos": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.acos(op1) * 100000)/100000; break;
                 case "atan": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.atan(op1) * 100000)/100000; break;
-                case "sqrt": if(op1 >= -1 && op1 <= 1) res = Math.sqrt(op1); break;
+                case "sqrt": res = Math.sqrt(op1); break;
                 case "!": if(op1 > 0) res = Number(this.#factorial(op1)); break;
                 case "ln": if(op1 > 0) res = Math.log(op1); break;
             }
             this.pila[0] = res;
-            this.#print();
+            this.print();
         }
         if(this.isShift) this.doShift();
     }
 
     enter() {
         if(this.#unNumero()) {
-            if(this.pila.length < 10) {
-                this.#unoMas(this.nextNum);
-                this.nextNum = "";
-                this.#print();
-            }
+            this.unoMas(this.nextNum);
+            this.nextNum = "";
+            this.print();
         }
     }
 
     borrar() {
         this.nextNum = "";
-        this.#print();
+        this.print();
     }
 
     apagar() {
@@ -107,7 +112,7 @@ class CalculadoraRPN {
         this.nextPila = 0;
         this.nextNum = "";
         this.isShift = false;
-        this.#print();
+        this.print();
     }
 
     raiz() {
@@ -132,30 +137,30 @@ class CalculadoraRPN {
 
     digito(digito) {
         this.nextNum = this.nextNum + "" + digito;
-        this.#print();
+        this.print();
         if(this.isShift) this.doShift();
     }
 
     masMenos() {
         this.nextNum = (Number(this.nextNum) * -1) + "";
-        this.#print();
+        this.print();
     }
 
     PI() {
-        if(this.pila.length < 10 && this.nextNum == "") {
+        if(this.nextNum == "") {
             this.digito(Math.PI);
             this.enter();
         }
     }
 
     E() {
-        if(this.pila.length < 10 && this.nextNum == "") {
+        if(this.nextNum == "") {
             this.digito(Math.E);
             this.enter();
         }
     }
 
-    #unoMas(res) {
+    unoMas(res) {
         var aux = this.pila.length;
         for(var i = aux; i > 0; i--) {
             this.pila[i] = this.pila[i - 1]
@@ -218,8 +223,4 @@ class CalculadoraRPN {
     }
 }
 
-var calc = new CalculadoraRPN();
-
-/*dígitos, punto, suma, resta, multiplicación, división, mrc, mMenos, mMas, borrar, igual, 
-porcentaje, raíz y mas/menos (*/
-
+this.calc = new CalculadoraRPN();

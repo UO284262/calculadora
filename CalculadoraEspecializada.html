@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <meta name ="author" content ="Abel Busto Dopazo" />
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Especializada</title>
+    <script src="CalculadoraEspecializada.js"></script>
+    <link rel="stylesheet" type="text/css" href="CalculadoraEspecializada.css" />
+</head>
+
+<body>
+        <h1>CALCULADORA ESPECIALIZADA</h1>
+        <aside>
+            <label for="linea10">10</label><input title="linea9" id="linea10" name="linea10" type="text" readonly disabled>
+            <label for="linea9">9</label><input title="linea8" id="linea9" name="linea9" type="text" readonly disabled>
+            <label for="linea8">8</label><input title="linea7" id="linea8" name="linea8" type="text" readonly disabled>
+            <label for="linea7">7</label><input title="linea6" id="linea7" name="linea7" type="text" readonly disabled>
+            <label for="linea6">6</label><input title="linea5" id="linea6" name="linea6" type="text" readonly disabled>
+            <label for="linea5">5</label><input title="linea4" id="linea5" name="linea5" type="text" readonly disabled>
+            <label for="linea4">4</label><input title="linea3" id="linea4" name="linea4" type="text" readonly disabled>
+            <label for="linea3">3</label><input title="linea2" id="linea3" name="linea3" type="text" readonly disabled>
+            <label for="linea2">2</label><input title="linea1" id="linea2" name="linea2" type="text" readonly disabled>
+            <label for="linea1">1</label><input title="linea0" id="linea1" name="linea1" type="text" readonly disabled>
+            <label for="linea0">Next:</label><input title="linea0" id="linea0" name="linea0" type="text" readonly disabled>
+        </aside>
+        <aside>
+            <input type="button" value="CR" onclick="calc.modoCoor()">
+            <input type="button" value="HUSO" onclick="calc.husoHorario()">
+            <input type="button" value="LOC" onclick="calc.localizacion()">
+            <input type="button" value="D(mi)" onclick="calc.distancia(value)">
+            <input type="button" value="D(km)" onclick="calc.distancia(value)">
+
+            <input type="button" value="e" onclick="calc.E()">
+            <input type="button" value="x^y" onclick="calc.potencia()">
+            <input type="button" value="&#8730;" onclick="calc.raiz()">
+            <input type="button" value="CE" onclick="calc.borrar()">
+            <input type="button" value="C" onclick="calc.apagar()">
+
+            <input type="button" value="PI" onclick="calc.PI()">
+            <input type="button" value="n!" onclick="calc.factorial()">
+            <input type="button" value="ln" onclick="calc.operacionUnaria(value)">
+            <input type="button" value="Enter" onclick="calc.enter()">
+
+            <input type="button" value="sin" onclick="calc.operacionUnaria(value)">
+            <input type="button" value="1" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="2" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="3" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="+" onclick="calc.operacionBinaria(value)">
+
+            <input type="button" value="cos" onclick="calc.operacionUnaria(value)">
+            <input type="button" value="4" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="5" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="6" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="-" onclick="calc.operacionBinaria(value)">
+
+            <input type="button" value="tan" onclick="calc.operacionUnaria(value)">
+            <input type="button" value="7" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="8" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="9" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="x" onclick="calc.multiplicacion()">
+
+            <input type="button" value="SHIFT" onclick="calc.doShift()">
+            <input type="button" value="," name="digito" onclick="calc.punto()">
+            <input type="button" value="0" name="digito" onclick="calc.digito(value)">
+            <input type="button" value="+/-" onclick="calc.masMenos()">
+            <input type="button" value="·/·" onclick="calc.operacionBinaria(value)">
+        </aside>
+</body>
+</html>
