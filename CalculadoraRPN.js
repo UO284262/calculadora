@@ -120,7 +120,8 @@ class CalculadoraRPN {
     }
 
     punto() {
-        this.digito(".");
+        if(!(this.nextNum + "").includes("."))
+            this.digito(".");
     }
 
     multiplicacion() {
