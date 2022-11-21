@@ -1,0 +1,19 @@
+h1 {
+    background-color: #416042;
+    color: beige;
+}
+
+h2 {
+    background-color: #79A97B;
+    color: black;
+}
+
+h3, h2, h4, p {
+    background-color: #416042;
+    color: #ffffff;
+}
+
+body {
+    background-color: #79A97B;
+    color: beige
+}
