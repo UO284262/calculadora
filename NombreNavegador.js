@@ -1,1 +1,1 @@
-document.write("Nombre del navegador: " + infoNavegador.nombre);
+document.write(infoNavegador.nombre);
