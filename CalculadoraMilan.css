@@ -1,3 +1,4 @@
+/*Especificidad (0,0,1)*/
 body {
     color: #1a1a1a;
     display: flex;
@@ -6,6 +7,7 @@ body {
     background-color: white;
 }
 
+/*Especificidad (0,0,1)*/
 main {
     background-color: #79A97B;
     display: grid;
@@ -17,22 +19,26 @@ main {
     border: 2px double #0a200b;
 }
 
+/*Especificidad (0,1,1)*/
 input[type="text"] {
     grid-column: 1 / span 5;
     background-color: #1a1a1a;
     color: white;
 }
 
+/*Especificidad (0,0,1)*/
 label {
     grid-column: 1 / span 5;
     font-size: 1.2em;
 }
 
+/*Especificidad (0,2,1)*/
 input[type="button"][value="+"] {
     grid-row: span 2;
     height: 8.5em;
 }
 
+/*Especificidad (0,1,1)*/
 input[type="button"] {
     height: 4em;
     background-color: #0a200b;
