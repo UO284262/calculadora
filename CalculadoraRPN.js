@@ -223,4 +223,4 @@ class CalculadoraRPN {
     }
 }
 
-this.calc = new CalculadoraRPN();
+var calc = new CalculadoraRPN();
