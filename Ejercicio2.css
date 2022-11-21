@@ -1,8 +1,10 @@
+/*Selector Specificity (0,0,1)*/
 h1,h2,p {
     background-color: #416042;
     color: beige;
 }
 
+/*Selector Specificity (0,0,1)*/
 body {
     background-color: #79A97B;
     color: white;

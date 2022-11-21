@@ -1,4 +1,4 @@
-document.write("Otros datos del navegador:\n");
+document.write("Otros datos del navegador:");
 document.write("Versión: ");
 document.write(infoNavegador.version);
 document.write("\nPlataforma: ");
