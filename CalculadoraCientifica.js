@@ -142,13 +142,13 @@ class CalculadoraMilan {
                 this.number += 2;
                 this.operacion[this.number] = this.operacion[this.number - 4];
             }
-            else if(this.operacion[this.simbolo] == "/" && !isNaN(this.operacion[this.number - 2])  && isNaN(this.operacion[this.number]))
+            else if(this.operacion[this.simbolo] == "/" && !isNaN(this.operacion[this.number - 2])  && isNaN(this.operacion[this.number]) && !((this.operacion[this.number] + "").includes("%")))
             {
                 this.operacion[this.number] = this.operacion[this.number - 2];
                 this.operacion[this.number - 2] = Number(1);
                 this.lastPressed = "=";
             }
-            else if(this.operacion[this.simbolo] == "*" && !isNaN(this.operacion[this.number - 2])  && isNaN(this.operacion[this.number]))
+            else if(this.operacion[this.simbolo] == "*" && !isNaN(this.operacion[this.number - 2])  && isNaN(this.operacion[this.number]) && !((this.operacion[this.number] + "").includes("%")))
             {
                 this.operacion[this.number] = this.operacion[this.number - 2];
                 this.operacion[this.number - 2] = Number(1);
@@ -178,7 +178,11 @@ class CalculadoraMilan {
         {
             aComputar += operacion[i];
         }
-        return Number(eval(aComputar));
+        try {
+            return Number(eval(aComputar));
+        } catch(Err) {
+            alert("Error: " + Err);
+        }
     }
 
     borrar() {
@@ -187,10 +191,10 @@ class CalculadoraMilan {
             var aux = this.pantalla.charAt(this.pantalla.length - 1)
             if(isNaN(aux) && aux != "%" && aux != ".")
             {
-                this.operacion = this.operacion.slice(0,this.operacion.this.operacion.length - 2);
+                this.operacion = this.operacion.slice(0,this.operacion.length - 2);
                 this.simbolo-=2;
                 this.number-=2;
-                this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
+                this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
             }
             else
             {
@@ -207,10 +211,11 @@ class CalculadoraMilan {
                     else {
                         this.operacion[this.number] = Number((this.operacion[this.number] + "").substring(0,(this.operacion[this.number] + "").length - 1));
                     }
-                    this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
+                    this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
                 }
             }
             this.print();
+            this.lastPressed = "";
         }
     }
 
@@ -219,9 +224,9 @@ class CalculadoraMilan {
         this.operacion[this.number] = numero;
         while(!isNaN(this.pantalla[this.pantalla.length - 1]))
         {
-            this.pantalla = (this.pantalla + "").substring(0,this.pantalla.length - 1);
+            this.pantalla = this.pantalla.substring(0,this.pantalla.length - 1);
         }
-        this.pantalla += numero;
+        this.pantalla = numero;
         this.lastPressed = "mrc";
         this.print();
     }
@@ -615,7 +620,11 @@ class CalculadoraCientifica extends CalculadoraMilan{
                 aComputar += operacion[i];
             }
         }
-        return Number(eval(aComputar));
+        try {
+            return Number(eval(aComputar));
+        } catch(Err) {
+            alert("Error: " + Err);
+        }
     }
 
     borrarPlus() {
@@ -844,7 +853,11 @@ class CalculadoraCientifica extends CalculadoraMilan{
     }
 
     square() {
-        this.operacion[this.number] = Number(eval(this.operacion[this.number] * this.operacion[this.number]));
+        try {
+            this.operacion[this.number] = Number(eval(this.operacion[this.number] * this.operacion[this.number]));
+        } catch(Err) {
+            alert("Error: " + Err);
+        }
         this.pantalla = (this.pantalla + "").substring(0,this.preNums[this.preNum]);
         this.pantalla += this.operacion[this.number] + "";
         this.lastPressed = "square";
