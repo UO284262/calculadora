@@ -4,6 +4,7 @@ class CalculadoraRPN {
         this.nextPila = 0;
         this.nextNum = "";
         this.isShift = false;
+        this.fromPila = 0;
         document.addEventListener('keydown', (event) => {
             this.#ejecutar(event.key);
         });
@@ -34,27 +35,31 @@ class CalculadoraRPN {
             case "S": this.operacionUnaria("asin"); break;
             case "T": this.operacionUnaria("atan"); break;
             case "C": this.operacionUnaria("acos"); break;
+            case "ArrowUp": this.masPila(); break;
+            case "ArrowDown": this.menosPila(); break;
         }
     }
 
     print() {
         for(var i = 0; i <= this.pila.length; i++) {
             if(i <= 10){
-                document.getElementById("linea" + i).value = i == this.nextPila? this.nextNum : this.pila[i - 1];
+                document.querySelector("input[name = \"linea" + i+ "\"]").value = i == this.nextPila? this.nextNum : this.pila[i - 1 + this.fromPila];
+                document.querySelector("label[for = \"linea" + (i) + "\"]").textContent = i == this.nextPila? "Next:" : i + this.fromPila + "";
             }
         }
-        for(var i = this.pila.length + 1; i <= 10; i++) {
-            document.getElementById("linea" + i).value = "";
+        for(var i = this.pila.length + 1 - this.fromPila; i <= 10 + this.fromPila; i++) {
+            document.querySelector("input[name = \"linea" + i+ "\"]").value = "";
+            document.querySelector("label[for = \"linea" + (i) + "\"]").textContent = i == this.nextPila? "Next:" : i + this.fromPila + "";
         }
-        if(this.pila.length > 10) {
-            document.querySelector("label[for = \"linea10\"]").textContent = "10 ^";
+        if(this.pila.length >  this.fromPila + 10) {
+            document.querySelector("label[for = \"linea10\"]").textContent = this.fromPila + 10 + " ^";
         } else {
-            document.querySelector("label[for = \"linea10\"]").textContent = "10";
+            document.querySelector("label[for = \"linea10\"]").textContent = this.fromPila + 10 + "";
         }
     }
 
     operacionBinaria(operando) {
-        if(this.#params(2)) {
+        if(this.params(2)) {
             var op1 = this.pila[1];
             var op2 = this.pila[0];
             var res = 0;
@@ -65,14 +70,14 @@ class CalculadoraRPN {
                 case "*": res = Number(Number(op1) * Number(op2)); break;
                 case "^": res = Number(Number(op1) ** Number(op2)); break;
             }
-            this.#dosPorUno(res);
+            this.dosPorUno(res);
             this.print();
         }
         if(this.isShift) this.doShift();
     }
 
     operacionUnaria(operando) {
-        if(this.#params(1))
+        if(this.params(1))
         {
             var op1 = this.pila[0];
             var res = 0;
@@ -84,7 +89,7 @@ class CalculadoraRPN {
                 case "acos": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.acos(op1) * 100000)/100000; break;
                 case "atan": if(op1 >= -1 && op1 <= 1) res = Math.round(Math.atan(op1) * 100000)/100000; break;
                 case "sqrt": res = Math.sqrt(op1); break;
-                case "!": if(op1 > 0) res = Number(this.#factorial(op1)); break;
+                case "!": if(op1 > 0) res = Number(this.factorial(op1)); break;
                 case "ln": if(op1 > 0) res = Math.log(op1); break;
             }
             this.pila[0] = res;
@@ -106,12 +111,26 @@ class CalculadoraRPN {
         this.print();
     }
 
+    masPila() {
+        if(this.fromPila < this.pila.length - 10)
+            this.fromPila++;
+            this.print();
+    }
+
+    menosPila() {
+        if(this.fromPila > 0){
+            this.fromPila--;
+            this.print();
+        }
+    }
+
     apagar() {
         if(this.isShift) this.doShift();
         this.pila = [];
         this.nextPila = 0;
         this.nextNum = "";
         this.isShift = false;
+        this.fromPila = 0;
         this.print();
     }
 
@@ -137,9 +156,13 @@ class CalculadoraRPN {
     }
 
     digito(digito) {
-        this.nextNum = this.nextNum + "" + digito;
-        this.print();
-        if(this.isShift) this.doShift();
+        if(digito == "0" && this.nextNum == "0") return;
+        else
+        {
+            this.nextNum = this.nextNum + "" + digito;
+            this.print();
+            if(this.isShift) this.doShift();
+        }
     }
 
     masMenos() {
@@ -169,7 +192,7 @@ class CalculadoraRPN {
         this.pila[0] = res;
     }
 
-    #dosPorUno(res) {
+    dosPorUno(res) {
         for(var i = 0; i < this.pila.length; i++) {
             if(i == 0) this.pila[i] = res + "";
             else {
@@ -179,7 +202,7 @@ class CalculadoraRPN {
         }
     }
 
-    #params(num) {
+    params(num) {
         var count = 0;
         for(var i = 0; i < this.pila.length; i++) {
             if(!isNaN(this.pila[i])) count++;
@@ -191,7 +214,7 @@ class CalculadoraRPN {
         return (!isNaN(this.nextNum) && this.nextNum != "");
     }
 
-    #factorial(n) {
+    factorial(n) {
         var total = 1; 
         for (var i = 1; i <= n; i++) {
             total = total * i; 

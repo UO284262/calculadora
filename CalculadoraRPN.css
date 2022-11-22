@@ -1,3 +1,4 @@
+/*Especificidad (0,0,1)*/
 body {
     color: black;
     display: flex;
@@ -6,10 +7,24 @@ body {
     background-color: white;
 }
 
+/*Especificidad (0,0,1)*/
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+/*Especificidad (0,1,2)*/
+main input[type="button"] {
+    font-size: 0.95em;
+    height: 2.76em;
+    margin-top: 0.71em;
+}
+
+/*Especificidad (0,0,1)*/
 h1 {
     background-color: #e2e2e2;
     color: black;
-    width: 20em;
+    width: 16.4em;
     font-size: 1em;
     height: 2em;
     margin-block-end: 0em;
@@ -17,11 +32,13 @@ h1 {
     border: 3px inset #bbbbbb;
 }
 
+/*Especificidad (0,0,1)*/
 aside {
     background-color: #e2e2e2;
     color: black;
 }
 
+/*Especificidad (0,1,1)*/
 aside:last-of-type {
     border: 3px inset #bbbbbb;
     display: grid;
@@ -30,10 +47,12 @@ aside:last-of-type {
     width: 20em;
 }
 
+/*Especificidad (0,1,1)*/
 input[type="text"] {
     border: none;
 }
 
+/*Especificidad (0,1,1)*/
 input[type="button"] {
     border: 4px outset #bbbbbb;
     height: 4em;
@@ -41,11 +60,13 @@ input[type="button"] {
     color: black;
 }
 
+/*Especificidad (0,3,2)*/
 aside:last-of-type input[type="text"]:disabled {
     grid-column: 1 / span 5;
     font-size: 1em;
 }
 
+/*Especificidad (0,1,1)*/
 aside:first-of-type{
     border: 3px inset #bbbbbb;
     display: grid;
@@ -54,6 +75,7 @@ aside:first-of-type{
     width: 20em;
 }
 
+/*Especificidad (0,1,2)*/
 aside:first-of-type label {
     grid-column: 1 / span 1;
     font-size: 1em;
@@ -63,6 +85,7 @@ aside:first-of-type label {
     padding-left: 0.25em;
 }
 
+/*Especificidad (0,2,1)*/
 input[type="button"][value = "Enter"] {
     grid-column: span 2;
     background-color: black;
@@ -70,17 +93,20 @@ input[type="button"][value = "Enter"] {
     height: 4em;
 }
 
+/*Especificidad (0,1,1)*/
 input[name="digito"] {
     background-color: white;
     color: black;
 }
 
+/*Especificidad (0,3,2)*/
 aside:first-of-type input[type="text"]:disabled {
     grid-column: 2 / span 9;
     font-size: 1em;
     border-bottom: 1px dashed black;
 }
 
+/*Especificidad (0,1,2)*/
 aside:last-of-type label {
     grid-column: 1 / span 5;
     font-size: 0.8em;
